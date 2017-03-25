@@ -1,0 +1,101 @@
+.wizard a {
+    padding: 10px 12px 10px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    min-width: 15.75%;
+   /* margin-left: 0.25%;*/
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    color: #707070;
+    background: #EBEBEB;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.wizard a.inativo{
+    padding: 10px 12px 10px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    min-width: 15.75%;
+   /* margin-left: 0.25%;*/
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    color: #707070;
+    background: #A9A9A9;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+ 
+.wizard a:hover {
+    text-decoration: none;
+}
+
+.wizard a:first-child {
+    margin-left: 0;
+}
+ 
+.wizard:not(.left-arrow) a:before {
+    width: 0;
+    height: 0;
+    border-top: 20px inset transparent;
+    border-bottom: 20px inset transparent;
+    border-left: 20px solid #FFFFFF;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+}
+ 
+ .wizard:not(.left-arrow) a.ativo:after {
+    width: 0;
+    height: 0;
+    border-top: 20px inset transparent;
+    border-bottom: 20px inset transparent;
+    border-left: 20px solid #EBEBEB;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -20px;
+    z-index: 2;
+}
+ 
+.wizard:not(.left-arrow) a.inativo:after {
+    width: 0;
+    height: 0;
+    border-top: 20px inset transparent;
+    border-bottom: 20px inset transparent;
+    border-left: 20px solid #A9A9A9;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -20px;
+    z-index: 2;
+}
+ 
+.wizard a:first-child:before,
+.wizard a:last-child:after {
+    border: none;
+}
+
+#principal{
+    width:1048px;
+    background-color:#fdfdfd;
+    margin:0px auto 0px auto;
+}
+
+.nav{
+    width:900px;
+    margin:0px auto;
+}
+
+#principal .detalhe{
+    min-width: 400px;
+}
+
+#principal .conteudo .inativo{
+    display:none;
+}

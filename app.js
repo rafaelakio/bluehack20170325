@@ -97,6 +97,9 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
+app.get('/fallowup', function(req, res){
+    res.render('fallowup.html', { title: 'Cloudant Boiler Plate' });
+});
 
 function createResponseData(id, name, value, attachments) {
 
@@ -217,8 +220,8 @@ app.post('/tickets', function(req,resp){
     );
 });
 
-app.get('/tickets', function(req, resp){
-    var db = initDBConnection();
+getTickets = function (req, resp){
+        var db = initDBConnection();
     console.log('tickets database');
     db = cloudant.use(dbCredentials.tickets);
     resp.writeHead(200, {"Content-Type": "application/json"});
@@ -236,6 +239,10 @@ app.get('/tickets', function(req, resp){
             });
         });
     });
+}
+
+app.get('/tickets', function(req, res){
+    getTickets(req,res);
 });
 
 app.get('/calls', function(req, resp){
