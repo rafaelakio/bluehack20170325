@@ -14,5 +14,13 @@
                     "username": "599e4ca6-b682-467c-9d15-0b0ad156e86b",
                     "password": "JyRh4zugoeba"
                 }
+    },
+    {
+            "natural":
+                {
+                    "url": "https://gateway.watsonplatform.net/natural-language-classifier/api",
+                    "username": "65dc0e6d-2ef5-4ef9-9612-82555b135942",
+                    "password": "Eq6uFXvA1efk"
+                }
     }
 ]
