@@ -7,11 +7,10 @@ var express = require('express'),
     user = require('./routes/user'),
     http = require('http'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    wt_service = require('./modules/watson-service');
 
 var xpto = require('./modules/watson-apis');
-
-console.log("xptooooooooooooooooooooooooooo"+xpto.natural);
 
 var app = express();
 
@@ -229,7 +228,6 @@ app.get('/tickets', function(req, resp){
                 if (!err) {
                     var x = doc['tickets'];
                     var json_ = JSON.stringify(x);
-                    console.log(json_);
                     resp.write(json_);
                     resp.end();
                 }
@@ -249,7 +247,6 @@ app.get('/calls', function(req, resp){
                 if (!err) {
                     var x = doc['calls'];
                     var json_ = JSON.stringify(x);
-                    console.log(json_);
                     resp.write(json_);
                     resp.end();
                 }
@@ -269,7 +266,6 @@ app.get('/contatos', function(req, resp){
                 if (!err) {
                     var x = doc['contatos'];
                     var json_ = JSON.stringify(x);
-                    console.log(json_);
                     resp.write(json_);
                     resp.end();
                 }
@@ -278,6 +274,20 @@ app.get('/contatos', function(req, resp){
     });
 });
 
+app.get('/testeTone', function(req, res){
+    res.writeHead(200, {"Content-Type": "application/json"});
+    var rs = wt_service.serviceTone("API Reference pages provide an easy way for you to see the methods that are provided by a service and how to call them. This column provides general information and explains the parameters that are required by methods when called from different languages. Its content changes based on the selected langauge. On screens that are wide enough, the right column provides selectable tabs that show how to make sample method calls in REST (via the cURL command), Node.js, and Java, and includes example responses to those calls. On narrow screens, these examples are inlined, and you can access the page navigation and switch between REST, Node.js, and Java examples from the menu at the left.");
+    console.log(rs);
+    res.write(rs);
+    res.end();
+});
+
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));
+});
+
+app.use("/public", express.static(__dirname + '/public'));
+
+app.get("/testeangular", function(req, res){
+    res.render('hello.html', { title: 'teste' });
 });

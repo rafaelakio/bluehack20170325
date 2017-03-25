@@ -6,17 +6,26 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "4.13.x",
-    "ejs": "2.4.x",
-    "cloudant": "1.4.x",
+    "angular": "latest",
+    "angular-bootstrap": "0.10.0",
+    "angular-cookies": "latest",
+    "angular-mocks": "latest",
+    "angular-resource": "latest",
+    "angular-route": "latest",
+    "angular-ui-router": "#master",
     "body-parser": "1.14.x",
+    "bootstrap": "latest",
+    "cloudant": "1.4.x",
+    "connect-multiparty": "2.0.x",
+    "ejs": "2.4.x",
+    "errorhandler": "1.4.x",
+    "express": "4.13.x",
     "method-override": "2.3.x",
     "morgan": "1.6.x",
-    "errorhandler": "1.4.x",
-    "connect-multiparty": "2.0.x"
+    "watson-developer-cloud": "^2.27.1"
   },
   "repository": {},
   "engines": {
-  	"node": "4.x"
+    "node": "4.x"
   }
 }
