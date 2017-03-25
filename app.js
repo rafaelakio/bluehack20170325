@@ -53,7 +53,7 @@ function getDBCredentialsUrl(jsonData) {
     // VCAP_SERVICES. If you know your service key, you can access the
     // service credentials directly by using the vcapServices object.
     for (var vcapService in vcapServices) {
-        if (vcapService.match(/cloudant/i)) {
+        if (vcapService.match(/cloudantNoSQLDB/i)) {
             return vcapServices[vcapService][0].credentials.url;
         }
     }
@@ -62,6 +62,7 @@ function getDBCredentialsUrl(jsonData) {
 function initDBConnection() {
     //When running on Bluemix, this variable will be set to a json object
     //containing all the service credentials of all the bound services
+    console.log("sdfadsfasdfasdfasdfasdfasdf");
     if (process.env.VCAP_SERVICES) {
         dbCredentials.url = getDBCredentialsUrl(process.env.VCAP_SERVICES);
     } else { //When running locally, the VCAP_SERVICES will not be set
@@ -73,7 +74,9 @@ function initDBConnection() {
         // Alternately you could point to a local database here instead of a
         // Bluemix service.
         // url will be in this format: https://username:password@xxxxxxxxx-bluemix.cloudant.com
-        dbCredentials.url = getDBCredentialsUrl(fs.readFileSync("vcap-local.json", "utf-8"));
+        //dbCredentials.url = getDBCredentialsUrl(fs.readFileSync("vcap-local.json", "utf-8"));
+        var vcapServices = JSON.parse(fs.readFileSync("vcap-local.json", "utf-8"));
+        dbCredentials.url = vcapServices.VCAP_SERVICES.cloudantNoSQLDB[0].credentials.url;
     }
 
     cloudant = require('cloudant')(dbCredentials.url);
