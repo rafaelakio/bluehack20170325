@@ -1,0 +1,10 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  name: bluehack20170325
+  host: bluehack20170325
+  disk_quota: 1024M
+  services:
+  - bluehack20170325-cloudantNoSQLDB
