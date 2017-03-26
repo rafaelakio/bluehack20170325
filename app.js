@@ -96,10 +96,12 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
-app.get('/fallowup', function(req, res){
-    res.render('fallowup.html', { title: 'Cloudant Boiler Plate' });
+app.get('/followup', function(req, res){
+    res.render('followup.html', { title: 'Cloudant Boiler Plate' });
 });
-
+app.get('/dashboard', function(req, res){
+    res.render('dashboards.html', { title: 'Cloudant Boiler Plate' });
+});
 
 function createResponseData(id, name, value, attachments) {
 
@@ -280,9 +282,16 @@ app.get('/contatos', function(req, resp){
 
 app.get('/testeTone', function(req, res){
     res.writeHead(200, {"Content-Type": "application/json"});
-    var rs = wt_service.serviceTone("API Reference pages provide an easy way for you to see the methods that are provided by a service and how to call them. This column provides general information and explains the parameters that are required by methods when called from different languages. Its content changes based on the selected langauge. On screens that are wide enough, the right column provides selectable tabs that show how to make sample method calls in REST (via the cURL command), Node.js, and Java, and includes example responses to those calls. On narrow screens, these examples are inlined, and you can access the page navigation and switch between REST, Node.js, and Java examples from the menu at the left.");
-    console.log(rs);
-    //res.write(rs);
+    var db = initDBConnection();
+    dbCredentials.baseNova = 'baseNova';
+    cloudant.db.create(dbCredentials.baseNova, function(err, res) {
+        if (err) {
+            console.log('Could not create new db: ' + dbCredentials.baseNova + ', it might already exist.');
+        }
+    });
+    db = cloudant.use(dbCredentials.baseNova);
+     wt_service.serviceTone("API Reference pages provide an easy way for you to see the methods that are provided by a service and how to call them. This column provides general information and explains the parameters that are required by methods when called from different languages. Its content changes based on the selected langauge. On screens that are wide enough, the right column provides selectable tabs that show how to make sample method calls in REST (via the cURL command), Node.js, and Java, and includes example responses to those calls. On narrow screens, these examples are inlined, and you can access the page navigation and switch between REST, Node.js, and Java examples from the menu at the left.",
+     db);
     res.end();
 });
 
