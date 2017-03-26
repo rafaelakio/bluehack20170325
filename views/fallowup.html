@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Favorites Organizer powered by Cloudant</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/fallowup.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script
+
+</head>
+<body>
+    <div id="principal">
+        <div class="nav">
+            <div class="wizard small row ng-cloak" ng-cloak>
+                <!--<a ng-repeat="state in vm.states" ng-click="vm.setCurrent(state)" ng-class="{ 'current': state.isCurrent }">-->
+                <a class="ativo">
+                    <div class="badge">
+                        <div class="border"></div>
+                        <!--<div class="number">{{$index + 1}}</div>-->
+                        <div class="number">1</div>
+                    </div>
+                    <!--{{ state.name }}-->
+                    Ticket Aberto
+                </a>
+                <a class="inativo">
+                    <div class="badge">
+                        <div class="border"></div>
+                        <!--<div class="number">{{$index + 1}}</div>-->
+                        <div class="number">2</div>
+                    </div>
+                    <!--{{ state.name }}-->
+                    Triagem
+                </a>
+                <a class="inativo">
+                    <div class="badge">
+                        <div class="border"></div>
+                        <!--<div class="number">{{$index + 1}}</div>-->
+                        <div class="number">3</div>
+                    </div>
+                    <!--{{ state.name }}-->
+                    Em Analise
+                </a>
+                <a class="inativo">
+                    <div class="badge">
+                        <div class="border"></div>
+                        <!--<div class="number">{{$index + 1}}</div>-->
+                        <div class="number">4</div>
+                    </div>
+                    <!--{{ state.name }}-->
+                    Resolu&ccedil;&atilde;o
+                </a>
+                <a class="inativo">
+                    <div class="badge">
+                        <div class="border"></div>
+                        <!--<div class="number">{{$index + 1}}</div>-->
+                        <div class="number">5</div>
+                    </div>
+                    Conclu&iacute;do
+                    <!--{{ state.name }}-->
+                </a>
+            </div>
+        </div>
+
+        <div class="conteudo">
+            <section id="ticketAberto" class="detalhe ativo">        
+                <header>
+                    <h2>N. Ticket</h2><p id="id">Numero de abertura do ticket</p>
+                    <h2>Cliente: </h2><p id="nome">Nome do cliente</p>
+                    <h2>Atendente</h2><p id="atendente">Nome do atendente</p>
+                </header>
+
+                <article>
+                    <h2>Descri&ccedil;&atilde;o</h2>
+                    <p>Carregar Descrição.</p>            
+                </article>
+            </section>
+
+            <section id="triagem" class="detalhe inativo">        
+                <header>
+                    <h2>N. Ticket</h2><p id="id">Numero de abertura do ticket</p>
+                    <h2>Cliente: </h2><p id="nome">Nome do cliente</p>
+                    <h2>Atendente</h2><p id="atendente">Nome do atendente</p>
+                </header>
+
+                <article>
+                    <h2>Descri&ccedil;&atilde;o</h2>
+                    <p>Carregar Descrição.</p>            
+                </article>
+            </section>
+        
+            <section id="analise" class="detalhe inativo">
+                <header>
+                    <h2>N. Ticket</h2><p id="id">Numero de abertura do ticket</p>
+                    <h2>Cliente: </h2><p id="nome">Nome do cliente</p>
+                    <h2>&Aacute;rea: </h2><p id="area"></p>
+                    <h2>Analista: </h2><p id="analista">Nome do analista</p>
+                </header>
+
+                <article>
+                    <h2>Descri&ccedil;&atilde;o:</h2>
+                    <p>Seu ticket está em analise.</p>            
+                </article>
+            </section>
+
+            <section id="resolucao" class="detalhe inativo">
+                <header>
+                    <h2>N. Ticket</h2><p id="id">Numero de abertura do ticket</p>
+                    <h2>Cliente: </h2><p id="nome">Nome do cliente</p>
+                    <h2>&Aacute;rea: </h2><p id="area"></p>
+                    <h2>Analista: </h2><p id="analista">Nome do analista</p>
+                </header>
+
+                <article>
+                    <h2>Resolu&ccedil;&atilde;o:</h2>
+                    <p>Sua nova fatura foi enviada.</p>            
+                </article>
+            </section>
+
+            <section id="concluido" class="detalhe inativo">
+                <header>
+                    <h2>N. Ticket</h2><p id="id">Numero de abertura do ticket</p>
+                    <h2>Cliente: </h2><p id="nome">Nome do cliente</p>
+                    <h2>&Aacute;rea: </h2><p id="area"></p>
+                    <h2>Analista: </h2><p id="analista">Nome do analista</p>
+                </header>
+
+                <article>
+                    <form id="feddbackform">
+                        <fieldset>
+                            <legend>Ajude nos fazer um melhor atendimento</legend>
+                            <label>Voc&ecirc; foi bem atendido?</label>
+                            <label>Sim: </label><input type="radio" name="satisfacao" value="S" />
+                            <label>N&atilde;o: </label><input type="radio" name="satisfacao" value="N" />
+                            <label>Seu problema foi atendido corretamente?</label>
+                            <fieldset>
+                                <legend>Seu problema foi atendido corretamente?</legend>
+                                <label>Sim: </label><input type="radio" name="resolucao" value="S" />
+                                <label>N&atilde;o: </label><input type="radio" name="resolucao" value="N" />
+                                <label>Conte-nos o que aconteceu</label>
+                                <textarea name="comentarioCliente" cols="10" rows="5"></textarea>
+                            </fieldset>
+                            <label>Qual seu grau de satisfa&ccedil;&atilde;o com o atendimento?</label>
+                            <select name="grauSatisfacaoAtendimento">
+                                <option value="0">Indique seu grau de satisfacao</option>
+                                <option value="1">Insatisfeito</option>
+                                <option value="2">Pouco satisfeito</option>
+                                <option value="3">Satisfeito</option>
+                                <option value="4">Totalmente satisfeito</option>
+                            </select>
+                            <label>Qual o seu grau de satisfa&ccedil;&atilde;o com a an&aacute;lise</label>
+                            <select name="grauSatisfacaoAnalise">
+                                <option value="0">Indique seu grau de satisfacao</option>
+                                <option value="1">Insatisfeito</option>
+                                <option value="2">Pouco satisfeito</option>
+                                <option value="3">Satisfeito</option>
+                                <option value="4">Totalmente satisfeito</option>
+                            </select>
+                        </fieldset>
+                </article>
+            </section>
+        </div>
+
+        <footer>
+            <p>Copyright 2015 Código Fonte©</p>
+        </footer>
+    </div>
+</html>
