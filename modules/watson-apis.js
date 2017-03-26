@@ -35,7 +35,7 @@ module.exports = {
         console.log(JSON.stringify(response, null, 2));
     });
   },
-  tone : function (inputData, callback) {
+  tone : function (inputData, db, callback) {
     var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
     var usr = _credJson[0].tone.username;
     var pss = _credJson[0].tone.password;
@@ -50,7 +50,7 @@ module.exports = {
         if (err)
           console.log(err);
         else
-          typeof callback == 'function' ? callback(JSON.stringify(tone, null, 2)) : "";
+          typeof callback == 'function' ? callback(JSON.stringify(tone, null, 2), db) : "";
     });
   },
   translator : function(inputData, db,  callback){

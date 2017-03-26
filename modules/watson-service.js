@@ -2,7 +2,7 @@ var watson_svs = require('./watson-apis');
 //console.log(watson_svs);
 module.exports = {
     serviceTone : function(inputData, db){
-        var f1 = function(input){watson_svs.tone(input, function(res, db){
+        var f1 = function(input, db){watson_svs.tone(input, db, function(res, db){
                 db.insert({
                     value: res
                 }, id, function(err, doc) {
