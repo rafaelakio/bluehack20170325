@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    express = require('express'),
     _cred = fs.readFileSync("./modules/credentials.json", "utf-8");
 var _credJson = JSON.parse(_cred);
 const watson = require('watson-developer-cloud');
@@ -38,45 +39,41 @@ module.exports = {
     var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
     var usr = _credJson[0].tone.username;
     var pss = _credJson[0].tone.password;
-    //console.log(usr);
-    //console.log(pss);
     var tone_analyzer = new ToneAnalyzerV3({
         username: usr,
         password: pss,
         version_date: '2016-05-19',
         version: 'v3'
     });
-    //console.log(inputData);
     tone_analyzer.tone({ text: inputData },
       function(err, tone) {
         if (err)
           console.log(err);
         else
           typeof callback == 'function' ? callback(JSON.stringify(tone, null, 2)) : "";
-        //console.log(inputData);
     });
   },
-  translator : function(inputData, callback){
+  translator : function(inputData, db,  callback){
     var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
     var user = _credJson[1].translator.username;
     var pass = _credJson[1].translator.password;
     var _url = _credJson[1].translator.url;
-    var x =
-    {
-      username: user, password: pass, url:_url
-    };
-    //console.log(typeof callback);
-    var language_translator = new LanguageTranslatorV2(x);
+    console.log(db);
+    var language_translator = new LanguageTranslatorV2(
+      {
+        username: user, password: pass, url:_url
+      });
     language_translator.translate({
         text: inputData,
         source: 'en',
         target: 'pt'
       }, function(err, translation) {
+        console.log('teste'+db);
         if (err)
           console.log(err)
         else
-          typeof callback == 'function' ? callback(translation) : "";
-        //console.log(res);
+          typeof callback == 'function' ? callback(translation, db) : "";
+        //console.log(translation);
     });
   }
 };
