@@ -34,29 +34,29 @@ module.exports = {
         console.log(JSON.stringify(response, null, 2));
     });
   },
-  tone : function (inputData) {
+  tone : function (inputData, callback) {
     var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
     var usr = _credJson[0].tone.username;
     var pss = _credJson[0].tone.password;
-    console.log(usr);
-    console.log(pss);
+    //console.log(usr);
+    //console.log(pss);
     var tone_analyzer = new ToneAnalyzerV3({
         username: usr,
         password: pss,
         version_date: '2016-05-19',
         version: 'v3'
     });
-
-    tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' },
+    //console.log(inputData);
+    tone_analyzer.tone({ text: inputData },
       function(err, tone) {
         if (err)
           console.log(err);
         else
-          var resposta = JSON.stringify(tone, null, 2);
-        console.log(resposta);
+          typeof callback == 'function' ? callback(JSON.stringify(tone, null, 2)) : "";
+        //console.log(inputData);
     });
   },
-  translator : function(inputData){
+  translator : function(inputData, callback){
     var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
     var user = _credJson[1].translator.username;
     var pass = _credJson[1].translator.password;
@@ -65,6 +65,7 @@ module.exports = {
     {
       username: user, password: pass, url:_url
     };
+    //console.log(typeof callback);
     var language_translator = new LanguageTranslatorV2(x);
     language_translator.translate({
         text: inputData,
@@ -74,9 +75,8 @@ module.exports = {
         if (err)
           console.log(err)
         else
-          var resposta = translation
-        console.log(resposta);
-        return resposta;
+          typeof callback == 'function' ? callback(translation) : "";
+        //console.log(res);
     });
   }
 };
